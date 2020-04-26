@@ -106,7 +106,7 @@ export class PostListComponent implements OnInit {
 		this.offset = (this.currentPage - 1) * this.itemsPerPage;
 		//页码*每页数量计算出结束位置
 		this.end = (this.currentPage) * this.itemsPerPage;
-		return this.postService.getPostList(1).subscribe(
+		return this.postService.getPostList(this.currentPage).subscribe(
 			res => {
 				// this.postList = res["items"].slice(this.offset, this.end > this.totalRecords ? this.totalRecords : this.end);
 				//array.slice(start,end)返回指定数组的片段，参数为起始位置和结束位置

@@ -4,6 +4,7 @@
             <h3 class="panel-title">{{'signIn.signIn' | translate}}</h3>
         </div>
         <div class="panel-body">
+            <!-- 表单提交后调用ts的doLogin()方法 -->
             <form #form="ngForm" (ngSubmit)="form.form.valid && doLogin()" novalidate class="form-horizontal"
                 role="form">
                 <div class="form-group" [ngClass]="{ 'has-error': form.submitted && !userName.valid }">
