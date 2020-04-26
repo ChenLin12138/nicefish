@@ -102,11 +102,16 @@ export class PostListComponent implements OnInit {
 	}
 
 	public loadData() {
+		//根据页数*每页指定的数量计算出起始位置
 		this.offset = (this.currentPage - 1) * this.itemsPerPage;
+		//页码*每页数量计算出结束位置
 		this.end = (this.currentPage) * this.itemsPerPage;
-		return this.postService.getPostList().subscribe(
+		return this.postService.getPostList(1).subscribe(
 			res => {
-				this.postList = res["items"].slice(this.offset, this.end > this.totalRecords ? this.totalRecords : this.end);
+				// this.postList = res["items"].slice(this.offset, this.end > this.totalRecords ? this.totalRecords : this.end);
+				//array.slice(start,end)返回指定数组的片段，参数为起始位置和结束位置
+				//可以通过res["content"]的方式取出返回对象res中的content的内容。
+				this.postList = res["content"].slice(this.offset, this.end > this.totalRecords ? this.totalRecords : this.end);
 			},
 			error => { console.log(error) },
 			() => { }
