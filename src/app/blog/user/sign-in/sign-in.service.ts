@@ -22,6 +22,11 @@ export class SignInService {
           console.log("login success>" + data);
           let user = data;
           console.log("user object>" + user);
+          //localStorage可以将数据存储到本地存储。可以理解为浏览器端的缓存
+          //被存储的数据只能是字符串形式的
+          //JSON.stringify(user)将来user转换我string字符串
+          //Subject<any>用来存储订阅对象，Subject.next尅实现多发，对订阅者的多发。
+          //也就是说，当用户变更时，这个变更会应用到其它所有订阅subject的地方
           localStorage.setItem("currentUser", JSON.stringify(user));
           this.subject.next(Object.assign({}, user));
         },
@@ -32,7 +37,9 @@ export class SignInService {
   }
 
   public logout(): void {
+    //退出的时候，移除currentUser
     localStorage.removeItem("currentUser");
+    //从subject中移除。
     this.subject.next(Object.assign({}));
   }
 }

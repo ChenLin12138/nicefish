@@ -6,7 +6,8 @@ import { Observable } from "rxjs";
 export class PostService {
     public postDetailURL = "mock-data/post-mock.json";
     // public postListURL = "mock-data/postlist-mock.json";
-    public postListURL = "http://localhost/nicefish/cms/post/post-list/";
+    // public postListURL = "/nicefish/cms/post/post-list/";
+    public postListURL = "http://localhost:8080/nicefish/cms/post/post-list/";
     public postListSearchURL = "mock-data/postlist-search-mock.json";
 
     constructor(public httpClient: HttpClient) {

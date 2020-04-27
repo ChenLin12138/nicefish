@@ -111,7 +111,10 @@ export class PostListComponent implements OnInit {
 				// this.postList = res["items"].slice(this.offset, this.end > this.totalRecords ? this.totalRecords : this.end);
 				//array.slice(start,end)返回指定数组的片段，参数为起始位置和结束位置
 				//可以通过res["content"]的方式取出返回对象res中的content的内容。
-				this.postList = res["content"].slice(this.offset, this.end > this.totalRecords ? this.totalRecords : this.end);
+				//因为调用的api提供了分页功能，所以返回值只有一页，而下面被注释的方法其实是针对返回所有内容的
+				// this.postList = res["content"].slice(this.offset, this.end > this.totalRecords ? this.totalRecords : this.end);
+				//我们就搞一个最简单的，一页10个
+				this.postList = res["content"].slice(0, 10);
 			},
 			error => { console.log(error) },
 			() => { }
