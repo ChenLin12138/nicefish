@@ -28,6 +28,7 @@ export class SignInService {
           //Subject<any>用来存储订阅对象，Subject.next尅实现多发，对订阅者的多发。
           //也就是说，当用户变更时，这个变更会应用到其它所有订阅subject的地方
           localStorage.setItem("currentUser", JSON.stringify(user));
+          //Object.assign({}, user)将user添加到{}中
           this.subject.next(Object.assign({}, user));
         },
         error => {
